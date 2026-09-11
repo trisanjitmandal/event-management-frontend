@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { registerUser } from "@/api/authApi";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Eye, EyeOff } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -16,6 +17,8 @@ function Register() {
 
    const navigate = useNavigate();
    const [loading, setLoading] = useState(false);
+   const [showPassword, setShowPassword] = useState(false);
+   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
    const {
   register,
@@ -55,6 +58,7 @@ const onSubmit = async (data) => {
 };
 
   return (
+
     <div className="min-h-screen flex items-center justify-center bg-slate-100">
     <Card className="w-[420px]">
       <CardHeader>
@@ -116,20 +120,26 @@ const onSubmit = async (data) => {
 
         <div className="space-y-2 ">
           <Label>Password</Label>
-          <Input
 
-           type="password"
+          <div className="relative">
+
+          <Input
+           type={showPassword ? "text" : "password"}
            placeholder="Enter your password"
+
+           className="pr-10"
            {...register("password", {
-           required: "Password is required",
-           minLength: {
-           value: 8,
-           message: "Password must be at least 8 characters",
+            required: "Password is required",
+            minLength: {
+            value: 8,
+            message: "Password must be at least 8 characters",
            },
+
            maxLength: {
            value: 30,
            message: "Password cannot exceed 30 characters",
            },
+
            pattern: {
            value:
            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#]).+$/,
@@ -138,25 +148,61 @@ const onSubmit = async (data) => {
            },
            })}
            />
+
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+          >
+          {showPassword ? (
+          <EyeOff className="h-4 w-4" />
+          ) : (
+          <Eye className="h-4 w-4" />
+          )}
+          </button> 
+
+           </div>
+
             {errors.password && (
                 <p className="text-sm text-red-500">
                 {errors.password.message}
                 </p>
                 )}
-        </div>
+        </div> 
+
+        
           
         <div className="space-y-2">
-            <Label>Confirm Password</Label>
+          <Label>Confirm Password</Label>
 
-           <Input
-             type="password"
-             placeholder="Confirm your password"
+          <div className="relative">
+          <Input
+            type={showConfirmPassword ? "text" : "password"}
+            placeholder="Confirm your password"
+            className= "pr-10"
+
             {...register("confirmPassword", {
             required: "Please confirm your password",
             validate: (value) =>
-                value === watch("password") || "Passwords do not match",
+            value === watch("password") || "Passwords do not match",
             })}
             />
+
+         <button
+            type="button"
+            onClick={() =>
+            setShowConfirmPassword(!showConfirmPassword)
+          }
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+          >
+            {showConfirmPassword ? (
+            <EyeOff className="h-4 w-4" />
+            ) : (
+            <Eye className="h-4 w-4" />
+            )}
+            </button>
+
+            </div>
 
             {errors.confirmPassword && (
            <p className="text-sm text-red-500">
