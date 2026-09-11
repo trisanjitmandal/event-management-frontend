@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { loginUser } from "@/api/authApi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link} from "react-router-dom";
 import { getRoleFromToken } from "@/utils/jwt";
+import { Eye, EyeOff } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -18,6 +19,7 @@ function Login() {
 
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -108,24 +110,38 @@ function Login() {
 
           </div>
 
-          <div className="space-y-2">
+         <div className="space-y-2">
+         <Label>Password</Label>
 
-            <Label>Password</Label>
+         <div className="relative">
+         <Input
+             type={showPassword ? "text" : "password"}
+             placeholder="Enter your password"
+             className="pr-10"
 
-            <Input
-              type="password"
-              placeholder="Enter your password"
-              {...register("password", {
-                required: "Password is required",
-              })}
-            />
+             {...register("password", {
+             required: "Password is required",
+             })}
+             />
 
-            {errors.password && (
-              <p className="text-sm text-red-500">
-                {errors.password.message}
-              </p>
-            )}
+            <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+          >
+            {showPassword ? (
+            <EyeOff className="h-4 w-4" />
+            ) : (
+           <Eye className="h-4 w-4" />
+           )}
+         </button>
+         </div>
 
+          {errors.password && (
+          <p className="text-sm text-red-500">
+          {errors.password.message}
+          </p>
+          )}
           </div>
 
           <Button
@@ -135,6 +151,17 @@ function Login() {
           >
             {loading ? "Logging in..." : "Login"}
           </Button>
+
+          <div className="text-center text-sm test-slate-600">
+            Don't have an account?{" "}
+
+            <Link to= "/register"
+                  className="font-medium text-primary hover:underline" >
+
+                  Create an account  
+            </Link>
+
+          </div>
 
         </form>
 
