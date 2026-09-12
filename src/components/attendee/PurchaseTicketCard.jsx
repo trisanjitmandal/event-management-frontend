@@ -144,6 +144,10 @@ function PurchaseTicketCard({ event }) {
                                 -
                             </Button> 
 
+                    <div className="w-20 h-8 border rounded-md flex items-center justify-center">
+                    {quantity}
+                    </div>
+
                           <Button
                               type = "button"
                               variant="outline"
