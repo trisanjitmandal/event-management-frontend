@@ -129,28 +129,33 @@ function PurchaseTicketCard({ event }) {
 
 
                 <div className="space-y-2">
+                    <Label> Quantity </Label>
+                    <div className="flex items-center gap-4">
+                        
+                          <Button
+                              type = "button"
+                              variant="outline"
+                              size =  "icon"
+                              disabled={!selectedTicket ||quantity <= 1}
+                              onClick={() => {
+                              setQuantity((prev) => Math.max(1, prev - 1));
+                              }}
+                              >
+                                -
+                            </Button> 
 
-                    <Label>
-                        Quantity
-                    </Label>
-
-
-                    <Input
-                        type="number"
-                        min={1}
-                        value={quantity}
-                        disabled={!selectedTicket}
-                        onChange={(e) => {
-
-                            const value =
-                                Number(e.target.value);
-
-                            setQuantity(
-                                value < 1 ? 1 : value
-                            );
-
-                        }}
-                    />
+                          <Button
+                              type = "button"
+                              variant="outline"
+                              size =  "icon"
+                              disabled={!selectedTicket ||quantity >= selectedTicket.availableQuantity}
+                              onClick={() => {
+                              setQuantity((prev) => Math.min(selectedTicket.availableQuantity,prev + 1  ));
+                              }}
+                              >
+                              +
+                            </Button>     
+                    </div>
 
                 </div>
 
