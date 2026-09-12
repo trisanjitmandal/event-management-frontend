@@ -20,7 +20,7 @@ function AppSidebar({ menu }) {
       {/* Logo */}
       <SidebarHeader className="border-b">
         <h2 className="text-xl font-bold">
-          🎟 AU Event
+          AU Event
         </h2>
       </SidebarHeader>
 

@@ -38,11 +38,6 @@ export const organizerMenu = [
     path: "/organizer/dashboard",
     icon: LayoutDashboard,
   },
-  // {
-  //   title: "Events",
-  //   path: "/organizer/events",
-  //   icon: ClipboardList,
-  // },
   {
     title: "Create Event",
     path: "/organizer/create-event",
@@ -54,11 +49,11 @@ export const organizerMenu = [
     icon: Users,
   },
 
-  // {
-  //   title: "Profile",
-  //   path: "/organizer/profile",
-  //   icon: User,
-  // },
+  {
+    title: "Profile",
+    path: "/organizer/profile",
+    icon: User,
+  },
   
   {
     title: "My Events",
@@ -82,11 +77,6 @@ export const adminMenu = [
   //   title: "Events",
   //   path: "/admin/events",
   //   icon: CalendarDays,
-  // },
-  // {
-  //   title: "Profile",
-  //   path: "/admin/profile",
-  //   icon: User,
   // },
   ];
 

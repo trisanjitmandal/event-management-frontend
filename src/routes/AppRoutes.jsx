@@ -8,12 +8,14 @@ import ProtectedRoute from "@/components/common/ProtectedRoute";
 import AttendeeLayout from "@/layouts/AttendeeLayout";
 import OrganizerLayout from "@/layouts/OrganizerLayout";
 
+import Profile from "@/components/bio/Profile";
+
 import AttendeeDashboard from "@/pages/attendee/AttendeeDashboard";
 import BrowseEvents from "@/pages/attendee/BrowseEvents";
 import MyTickets from "@/pages/attendee/MyTickets";
 import TicketDetails from "@/pages/attendee/TicketDetails";
 import AttendeeEventDetails from "@/pages/attendee/EventDetails";
-import Profile from "@/pages/attendee/Profile";
+
 
 import OrganizerDashboard from "@/pages/organizer/OrganizerDashboard"
 import CreateEvent from "@/pages/organizer/CreateEvent"
@@ -26,11 +28,12 @@ import CreateStaff from "@/pages/organizer/CreateStaff"
 import StaffLayout from "@/layouts/StaffLayout";
 import StaffDashboard from "@/pages/staff/StaffDashboard"
 import ValidationHistory from "@/pages/staff/ValidationHistory";
-import StaffProfile from "@/pages/staff/StaffProfile";
+
 import ValidateTicket from "@/pages/staff/ValidateTicket";
 import AdminLayout from "@/layouts/AdminLayout";
 import AdminDashboard from "@/pages/admin/AdminDashboard";
 import OrganizerManagement from "@/pages/admin/OrganizerManagement";
+
 
 function AppRoutes() {
   return (
@@ -114,13 +117,11 @@ function AppRoutes() {
               path="tickets/:ticketId"
               element={<TicketDetails/>}
               />
-          
 
-
-            <Route
-              path="profile"
-              element={<Profile />}
-            />
+            <Route 
+              path="profile" 
+              element={<Profile />} 
+              />   
 
           </Route>
 
@@ -136,7 +137,7 @@ function AppRoutes() {
             <Route
               path="dashboard"
               element={<OrganizerDashboard />}
-            />
+            /> 
 
             <Route
               path="create-event"
@@ -168,6 +169,10 @@ function AppRoutes() {
               element={<CreateStaff/>}
             />
 
+            <Route 
+              path="profile" 
+              element={<Profile />} 
+              /> 
 
           </Route>
 
@@ -195,10 +200,10 @@ function AppRoutes() {
               element = {<ValidationHistory/> }
             />
 
-            <Route
-              path="profile"
-              element = {<StaffProfile/> }
-            />
+            <Route 
+              path="profile" 
+              element={<Profile />} 
+              /> 
 
           </Route>
 
