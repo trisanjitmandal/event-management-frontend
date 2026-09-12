@@ -78,7 +78,7 @@ function TicketCard({ ticket }) {
 
                     <span>
 
-                        ₹ {ticket.totalPrice}
+                         {ticket.totalPrice}
 
                     </span>
 
