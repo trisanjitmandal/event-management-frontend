@@ -65,14 +65,14 @@ function TicketActions({
     return (
 
         <div className="flex justify-end">
-
+            {ticket.status !== "USED" && (
             <Button
 
                 variant="destructive"
 
                 disabled={
                     loading ||
-                    ticket.status === "CANCELLED"
+                    ticket.status === "CANCEL"
                 }
 
                 onClick={handleCancel}
@@ -81,7 +81,7 @@ function TicketActions({
 
                 {
 
-                    ticket.status === "CANCELLED"
+                    ticket.status === "CANCEL"
 
                         ? "Ticket Cancelled"
 
@@ -94,7 +94,7 @@ function TicketActions({
                 }
 
             </Button>
-
+            )}
         </div>
 
     );
