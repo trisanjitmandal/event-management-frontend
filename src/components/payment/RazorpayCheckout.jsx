@@ -1,6 +1,6 @@
 import paymentApi from "@/api/paymentApi";
 import { useState } from "react";
-
+import { Button } from "@/components/ui/button";
 function RazorpayCheckout({
     eventId,
     ticketType,
@@ -118,14 +118,15 @@ function RazorpayCheckout({
     }
 };
 return (
-    <button
-      type = "button"
-      onClick={handlePaymet}
-      disabled = {loading}
-      className="w-full"
+    <Button
+        type = "button"
+        onClick={handlePaymet}
+        disabled = {loading}
+        className="w-full"
+
     > 
     {loading ? "processing.." : "pay now"}
-    </button>
+    </Button>
 );
 }
 
